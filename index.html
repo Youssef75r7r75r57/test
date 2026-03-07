@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard / Maintenance Workload</title>
+  <link rel="stylesheet" href="styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+    <div class="page-title">Dashboard / Maintenance Workload</div>
+
+  <main class="dashboard">
+
+    <header class="header-row">
+      <h1>Workload Summary</h1>
+      <div class="toolbar">
+        <span class="toolbar-icon" aria-hidden="true">&#8630;</span>
+        <div id="period-picker" class="period-picker">
+<button 
+  id="period-trigger"
+  class="period-trigger"
+  type="button"
+  title="Select period"
+  aria-haspopup="listbox"
+  aria-expanded="false"
+  aria-labelledby="period-trigger-label"
+>
+<span id="period-trigger-label"></span>
+
+  <span class="period-caret" aria-hidden="true">▼</span>
+</button>
+          <ul id="period-menu" class="period-menu" role="listbox" hidden></ul>
+        </div>
+      </div>
+    </header>
+
+    <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+
+    <section class="card kpi-card">
+      <div id="summary-kpis" class="kpi-grid seven"></div>
+    </section>
+
+    <section class="content-grid">
+      <div class="left-column">
+        <article class="card panel">
+          <div class="panel-head">
+            <h2>Ticket Priority Distribution</h2>
+            <div class="mini-period-picker" data-period-picker data-panel="priority">
+                      <span class="toolbar-icon" aria-hidden="true">&#8630;</span>
+              <button class="mini-period-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="mini-period-label"></span>
+                <span class="mini-period-caret">▼</span>
+              </button>
+              <ul class="mini-period-menu" role="listbox" hidden></ul>
+            </div>
+          </div>
+          <div id="priority-bars" class="bar-list"></div>
+        </article>
+
+        <article class="card panel">
+          <div class="panel-head">
+            <h2>Ticket Status <strong>Bullet</strong> Distribution</h2>
+            <div class="mini-period-picker" data-period-picker data-panel="status">
+                <span class="toolbar-icon" aria-hidden="true">&#8630;</span>
+              <button class="mini-period-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="mini-period-label"></span>
+                <span class="mini-period-caret">▼</span>
+              </button>
+              <ul class="mini-period-menu" role="listbox" hidden></ul>
+            </div>
+          </div>
+          <div id="status-bars" class="bar-list"></div>
+        </article>
+      </div>
+
+      <div class="right-column">
+        <article class="card panel">
+          <div class="panel-head">
+            <h2>Ticket Aging <strong>Bullet</strong> Distribution</h2>
+            <div class="mini-period-picker" data-period-picker data-panel="aging">
+                <span class="toolbar-icon" aria-hidden="true">&#8630;</span>
+              <button class="mini-period-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="mini-period-label"></span>
+                <span class="mini-period-caret">▼</span>
+              </button>
+              <ul class="mini-period-menu" role="listbox" hidden></ul>
+            </div>
+          </div>
+          <div id="aging-bars" class="bar-list"></div>
+        </article>
+
+        <article class="card kpi-card compact">
+          <div class="panel-head">
+            <h2>Workload Build-up Indicators</h2>
+            <div class="mini-period-picker" data-period-picker data-panel="buildup">
+                <span class="toolbar-icon" aria-hidden="true">&#8630;</span>
+              <button class="mini-period-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="mini-period-label"></span>
+                <span class="mini-period-caret">▼</span>
+              </button>
+              <ul class="mini-period-menu" role="listbox" hidden></ul>
+            </div>
+          </div>
+          <div id="buildup-kpis" class="kpi-grid three"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script src="fake-api.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
