@@ -32,16 +32,52 @@ const state = {
   }
 };
 
-const KPI_ICON_PATHS = {
-  totalActiveTickets: "M3 7h11v9H3z M5 9h7M5 11h7M5 13h5 M9 5h11v9H9z M11 7h7M11 9h7M11 11h5",
-  activeAssignedTickets: "M8 8a2 2 0 1 0 0.01 0 M16 8a2 2 0 1 0 0.01 0 M4 18v-2l4-3 4 3v2 M12 18v-2l4-3 4 3v2",
-  shareOfActiveAssigned: "M12 3a9 9 0 1 0 9 9h-9z M12 3v9h9",
-  activeEmergencyTickets: "M8 11h8v5H8z M7 16h10 M10 8v3 M14 8v3 M5 13h2 M17 13h2 M9 6l-1-1 M15 6l1-1",
-  activeVipTickets: "M4 8l3 4 5-5 5 5 3-4-2 9H6z M9 18h6",
-  activeEscalatedTickets: "M5 6h10v4H5z M5 12h10v6H5z M17 8h2 M17 14h2 M18 8v6 M18 14l2 2",
-  overdueTickets: "M3 7h11v9H3z M5 9h7M5 11h7M5 13h5 M9 5h11v9H9z M11 7h7M11 9h7M11 11h5",
-  netTicketFlow: "M4 12h8 M12 12h8 M9 9l3 3-3 3 M15 9l-3 3 3 3",
-  avgDailyNetFlow: "M5 17l4-5 3 3 6-8 M17 7h2v2"
+const KPI_ICON_ASSETS = {
+  totalActiveTickets: {
+    src: "imge/4.png",
+    width: 60,
+    height: 50
+  },
+  activeAssignedTickets: {
+    src: "imge/2.png",
+    width: 70,
+    height: 40
+  },
+  shareOfActiveAssigned: {
+    src: "imge/3.png",
+    width: 40,
+    height: 38
+  },
+  activeEmergencyTickets: {
+    src: "imge/1.png",
+    width: 60,
+    height: 40
+  },
+  activeVipTickets: {
+    src: "imge/8.png",
+    width: 80,
+    height: 70
+  },
+  activeEscalatedTickets: {
+    src: "imge/5.png",
+    width: 60,
+    height: 40
+  },
+  overdueTickets: {
+    src: "imge/4.png",
+    width: 60,
+    height: 50
+  },
+  netTicketFlow: {
+    src: "imge/7.png",
+    width: 80,
+    height: 60
+  },
+  avgDailyNetFlow: {
+    src: "imge/6.png",
+    width: 30,
+    height: 30
+  }
 };
 
 init();
@@ -384,16 +420,14 @@ function setStatus(message) {
 }
 
 function getKpiIcon(key) {
-  const path = KPI_ICON_PATHS[key] || KPI_ICON_PATHS.totalActiveTickets;
+  const icon = KPI_ICON_ASSETS[key] || KPI_ICON_ASSETS.totalActiveTickets;
+  const width = Number(icon.width) || 32;
+  const height = Number(icon.height) || 32;
+  const src = escapeHtml(icon.src);
 
   return `
-    <svg class="kpi-icon" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor"
-      stroke-width="1.6"
-      stroke-linecap="round"
-      stroke-linejoin="round">
-      <path d="${path}"></path>
-    </svg>
+    <img class="kpi-icon-image" src="${src}" alt="" aria-hidden="true"
+      style="width:${width}px;height:${height}px;" />
   `;
 }
 function escapeHtml(text) {
